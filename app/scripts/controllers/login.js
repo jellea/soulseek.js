@@ -6,13 +6,20 @@ angular.module('p2pmusicApp')
     $scope.initialized = false;
     $scope.showFiles = false;
 
+    // $scope.username = $cookieStore.get('username');
+
+    // if($scope.username.length > 0)
+    // {
+    //   $scope.setUsername();
+    // }
+
     $scope.setUsername = function() {
 
-      //mainChannel.userid = $scope.username;
       RTCService.setupDataChannel($scope.username);
-      $scope.username = '';
+      // $cookieStore.put('username', $scope.username);
 
       $scope.showFiles = true;
+      $scope.username = '';
 
     };
 

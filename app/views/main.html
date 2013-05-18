@@ -17,10 +17,16 @@
   </div>
   <div class="chat" ng-controller="ChatCtrl">
     <div class="chat-holder">
-      <div class="container-fluid chat-content">
+      <div class="container-fluid chat-title">
         <div class="row-fluid">
           <div class="span12">
             <h2>Chat</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid chat-content">
+        <div class="row-fluid">
+          <div class="span12">
             <table class="table">
               <tbody>
                 <tr ng-repeat="msg in msgs">
@@ -37,8 +43,8 @@
         <div class="row-fluid">
           <div class="span12">
             <form ng-submit='sendMessage()'>
-            <input type="text" class="span12" ng-model='message' placeholder="This is my message!">
-            <input type='submit' value='Send'>
+              <input type="text" class="span12" ng-model='message'>
+              <input type='submit' value='Send'>
             </form>
           </div>
         </div>
@@ -101,7 +107,7 @@
 
 <div class="overlay" ng-controller="LoginCtrl" ng-hide="initialized">
   <div class="message row-fluid">
-    <h1>Welcome.</h1>
+    <h1><img src="/images/logo.png"> SoulWeb</h1>
     <form ng-submit="setUsername()" ng-hide="showFiles">
       <div class="username">
         <label for="username">What's your nickname?</label>
