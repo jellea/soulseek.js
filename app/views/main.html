@@ -40,23 +40,22 @@
   </div>
 </div>
 
-<div class="overlay">
+<div class="overlay" ng-controller="LoginCtrl" ng-hide="initialized">
   <div class="message row-fluid">
     <h1>Welcome.</h2>
-    <form>
-      <div class="username" ng-controller="PeerCtrl">
-        <label for="inputName">What's your nickname?</label>
+    <form ng-submit="setUsername()" ng-hide="showFiles">
+      <div class="username">
+        <label for="username">What's your nickname?</label>
         <span class="input-append">
-          <input type="text" id="inputName">
+          <input type="text" id="username" ng-model="username" autofocus>
           <button type="submit" class="btn">Go!</button>
         </span>
       </div>
-      <div>
-      <div class="files" ng-controller="FileManagerCtrl">
+    </form>
+    <form ng-show="showFiles">
+      <div class="files">
         <label for="inputFiles">Files Please!</label>
-        <input type="file" id="inputFiles" class="span12" accept="audio/*" multiple onchange="angular.element(this).scope().setFile(this)">
-      </div>
-
+        <input type="file" id="inputFiles" class="span12" accept="audio/*" multiple onchange="angular.element(this).scope().setFiles(this)">
       </div>
     </form>
   </div>
