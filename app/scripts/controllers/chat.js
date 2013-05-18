@@ -13,9 +13,14 @@ angular.module('p2pmusicApp')
       $scope.$digest();
     });
 
+    $rootScope.$on('rtc-onopen', function(event, data)
+    {
+      $scope.msgs.push({user: 'chat', msg: 'user '+ data +' joined.'});
+      $scope.$digest();
+    });
+
     $rootScope.$on('rtc-onleave', function(event, data)
     {
-      console.log('event');
       $scope.msgs.push({user: 'chat', msg: 'user '+ data +' left.'});
       $scope.$digest();
     });

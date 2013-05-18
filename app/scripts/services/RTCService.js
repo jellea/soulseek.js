@@ -4,8 +4,36 @@ angular.module('p2pmusicApp')
   .factory('RTCService', function ($rootScope, fileService) {
 
     window.mainChannel = new DataChannel();
-    mainChannel.firebase = 'webrtc-experiment';
+
+    var URL = "http://localhost:9002/"
+
+    mainChannel.openSignalingChannel = function (config) {
+        var _channel = config.channel || this.channel || 'default-channel';
+        var sender = Math.round(Math.random() * 60535) + 5000;
+
+        io.connect(URL).emit('new-channel', {
+            channel: _channel,
+            sender : sender
+        });
+
+        var socket = io.connect(URL + _channel);
+        socket.channel = _channel;
+        socket.on('connect', function () {
+            if (config.callback) config.callback(socket);
+        });
+
+        socket.send = function (message) {
+            socket.emit('message', {
+                sender: sender,
+                data  : message
+            });
+        };
+
+        socket.on('message', config.onmessage);
+    };
+
     mainChannel.direction = 'many-to-many';
+
     var p2pChannels = [];
 
     var nms = ["De Jong", "Jansen", "De Vries", "Van den Berg",
@@ -20,7 +48,7 @@ angular.module('p2pmusicApp')
       // get user filelist
       $rootScope.$broadcast('rtc-onopen', userid);
       mainChannel.send('hi!');
-      //mainChannel.send({filelist: 'files'});
+      mainChannel.send({filelistRequest: true});
     }
 
     mainChannel.onleave = function (userid)
@@ -40,10 +68,25 @@ angular.module('p2pmusicApp')
           // send filelist if requested
           console.log('filelistRequest!');
           console.log(fileService.ownFiles);
-          mainChannel.channels[userid].send({file: fileService.ownFiles});
+          mainChannel.channels[userid].send(
+            {filelist:
+              fileService.ownFiles.map(function(x){return x.fullPath;})
+            }
+          );
         }
         if (typeof message.filelist !== 'undefined'){
-          console.log(message.filelist);
+          mainChannel.channels[userid].filelist = message.filelist;
+        }
+        if (typeof message.requestFile !== 'undefined'){
+
+          // if folder
+          // if single file
+          var file = ownFiles.filter(
+            function(x){return (x.fullPath==message.requestFile)}
+          );
+
+          console.log(file)
+          file[0].file(function(file){mainChannel.channels[userid].send(file)});
         }
 
       }
