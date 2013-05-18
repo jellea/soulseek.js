@@ -15,9 +15,6 @@ angular.module('p2pmusicApp')
 
     mainChannel.userid = nms[Math.floor(Math.random() * nms.length)];
 
-    mainChannel.connect('2');
-
-
     mainChannel.onopen = function (userid)
     {
       // get user filelist
@@ -25,10 +22,10 @@ angular.module('p2pmusicApp')
       mainChannel.send('hi!');
     }
 
-    mainChannel.onclose = function (userid)
+    mainChannel.onleave = function (userid)
     {
       console.log(userid);
-      $rootScope.$broadcast('rtc-onclose', userid);
+      $rootScope.$broadcast('rtc-onleave', userid);
     }
 
     // all incoming messages
@@ -78,5 +75,10 @@ angular.module('p2pmusicApp')
     };
 
     // Public API here
-    return mainChannel;
+    return {
+      mainChannel: mainChannel,
+      openConnection: function(){
+        mainChannel.connect('2');
+      }
+    }
   });
