@@ -41,6 +41,20 @@
         </div>
       </div>
     </div>
+    <div class="span9">
+      <table class="table" ng-controller="FiletransferCtrl">
+        <thead><h2>Transfers</h2></thead>
+        <tbody>
+          <tr ng-repeat="(fileName, value) in transfers">
+            <td>
+              {{fileName}}
+              <div class="progress progress-striped">
+                <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
+              </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

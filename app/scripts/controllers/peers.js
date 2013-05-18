@@ -6,7 +6,8 @@ angular.module('p2pmusicApp')
     $scope.peers = [];
 
     $scope.showFileList = function (){
-      console.log($scope.peer);
+      console.log(this.peer);
+      mainChannel.channels[this.peer].send({filelistRequest: true})
     }
 
     $rootScope.$on('rtc-onopen', function(event, data)

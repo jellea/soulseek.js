@@ -11,6 +11,8 @@ angular.module('p2pmusicApp')
 
     window.mainChannel = new DataChannel('default-channel',{
       direction: 'many-to-many',
+      autoCloseEntireSession: false,
+      transmitRoomOnce: false,
       openSignalingChannel: function (config) {
           var URL = "http://localhost:9002/";
 
@@ -88,7 +90,7 @@ angular.module('p2pmusicApp')
       },
       onFileProgress: function (packets)
       {
-        console.log(packets);
+        //console.log(packets);
         $rootScope.$broadcast('rtc-onFileProgress', packets);
 
         // packets.remaining
@@ -98,7 +100,7 @@ angular.module('p2pmusicApp')
       },
       onFileSent: function (file)
       {
-        console.log(file);
+        //console.log(file);
         $rootScope.$broadcast('rtc-onFileSent', file);
 
         // file.name
