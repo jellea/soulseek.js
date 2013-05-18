@@ -4,8 +4,36 @@ angular.module('p2pmusicApp')
   .factory('RTCService', function ($rootScope, fileService) {
 
     window.mainChannel = new DataChannel();
-    mainChannel.firebase = 'webrtc-experiment';
+
+    var URL = "http://localhost:9002/"
+
+    mainChannel.openSignalingChannel = function (config) {
+        var _channel = config.channel || this.channel || 'default-channel';
+        var sender = Math.round(Math.random() * 60535) + 5000;
+
+        io.connect(URL).emit('new-channel', {
+            channel: _channel,
+            sender : sender
+        });
+
+        var socket = io.connect(URL + _channel);
+        socket.channel = _channel;
+        socket.on('connect', function () {
+            if (config.callback) config.callback(socket);
+        });
+
+        socket.send = function (message) {
+            socket.emit('message', {
+                sender: sender,
+                data  : message
+            });
+        };
+
+        socket.on('message', config.onmessage);
+    };
+
     mainChannel.direction = 'many-to-many';
+
     var p2pChannels = [];
 
     var nms = ["De Jong", "Jansen", "De Vries", "Van den Berg",
