@@ -6,6 +6,12 @@ angular.module('p2pmusicApp')
       {user: 'chat', msg: 'welcome'}
     ];
 
+    $scope.sendMessage = function(){
+      mainChannel.send(this.message);
+      $scope.msgs.push({user: 'You', msg: this.message});
+      this.message = "";
+    }
+
     $rootScope.$on('rtc-onmessage', function(event, data)
     {
       console.log(data);

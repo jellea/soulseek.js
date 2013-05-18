@@ -5,8 +5,9 @@ angular.module('p2pmusicApp')
 
     $scope.showFiles = false;
 
-    $rootScope.$on('rtc-gotFilelist', function(event, data)
+    $rootScope.$on('rtc-gotFileList', function(event, data)
     {
+      console.log(data);
       $scope.showFiles = true;
     });
 
