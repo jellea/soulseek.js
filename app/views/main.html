@@ -105,18 +105,26 @@
 
 <div class="windows">
   <div class="file-browser" ng-controller="FileBrowserCtrl" ng-show="showFileBrowser">
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <h2>File browser</h2>
-          <table class="table">
-            <tbody>
-              <tr ng-repeat="file in files">
-                <td><a ng-click="stream()"><i class="icon-play-sign"></i></a>
-                  <a ng-click="download()"><i class="icon-download-alt"></i></a> {{file}}</td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>File browser</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr ng-repeat="file in files">
+                  <td><a ng-click="stream()"><i class="icon-play-sign"></i></a>
+                    <a ng-click="download()"><i class="icon-download-alt"></i></a> {{file}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
