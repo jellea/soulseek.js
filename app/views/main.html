@@ -1,30 +1,39 @@
 <div class="interface">
-  <div class="users">
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12" ng-controller="PeersCtrl">
-          <h2>Users</h2>
-          <table class="table">
-            <tbody>
-              <tr ng-repeat="peer in peers">
-                <td><a ng-click="showFileList()">{{peer}}</a></td>
-              </tr>
-            </tbody>
-          </table>
+  <div class="users" ng-controller="PeersCtrl">
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>Users</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr ng-repeat="peer in peers">
+                  <td><a ng-click="showFileList()">{{peer}}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="chat" ng-controller="ChatCtrl">
-    <div class="chat-holder">
-      <div class="container-fluid chat-title">
+    <div class="holder">
+      <div class="container-fluid title">
         <div class="row-fluid">
           <div class="span12">
             <h2>Chat</h2>
           </div>
         </div>
       </div>
-      <div class="container-fluid chat-content">
+      <div class="container-fluid content">
         <div class="row-fluid">
           <div class="span12">
             <table class="table">
@@ -39,7 +48,7 @@
         </div>
       </div>
 
-      <div class="container-fluid chat-bar">
+      <div class="container-fluid bar">
         <div class="row-fluid">
           <div class="span12">
             <form ng-submit='sendMessage()'>
@@ -64,22 +73,30 @@
   </div>
 
   <div class="transfers" ng-controller="FiletransferCtrl">
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <h2>Transfers</h2>
-          <table class="table">
-            <tbody>
-              <tr ng-repeat="(fileName, value) in transfers">
-                <td>
-                  {{fileName}}
-                  <div class="progress progress-striped active">
-                    <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>Transfers</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr ng-repeat="(fileName, value) in transfers">
+                  <td>
+                    {{fileName}}
+                    <div class="progress progress-striped active">
+                      <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
