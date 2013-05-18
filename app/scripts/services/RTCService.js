@@ -44,7 +44,7 @@ angular.module('p2pmusicApp')
       {
         // get user filelist
         $rootScope.$broadcast('rtc-onopen', userid);
-        mainChannel.send({filelistRequest: true});
+        //mainChannel.send({filelistRequest: true});
       },
       onleave: function (userid)
       {
@@ -59,7 +59,7 @@ angular.module('p2pmusicApp')
           console.log(message);
           if (typeof message.filelistRequest !== 'undefined'){
             // send filelist if requested
-            console.log('filelistRequest!');
+            //console.log('filelistRequest!');
             console.log(fileService.ownFiles);
             mainChannel.channels[userid].send(
               {filelist:
@@ -69,6 +69,7 @@ angular.module('p2pmusicApp')
           }
           if (typeof message.filelist !== 'undefined'){
             mainChannel.channels[userid].filelist = message.filelist;
+            $rootScope.$broadcast('rtc-gotFileList', userid);
           }
           if (typeof message.requestFile !== 'undefined'){
 
