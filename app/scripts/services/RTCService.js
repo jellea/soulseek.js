@@ -5,11 +5,6 @@ angular.module('p2pmusicApp')
 
     window.mainChannel = {}
 
-    var nms = ["De Jong", "Jansen", "De Vries", "Van den Berg",
-    "Van Dijk", "Bakker", "Visser", "Smit", "Meijer", "De Boer", "Mulder",
-    "De Groot", "Bos", "Vos", "Peters", "Hendriks", "Van Leeuwen", "Dekker",
-    "Brouwer", "De Wit", "Dijkstra", "Smits", "De Graaf", "Van der Meer"]
-
     var setupDataChannel = function(userid) {
       window.mainChannel = new DataChannel('default-channel',{
         direction: 'many-to-many',

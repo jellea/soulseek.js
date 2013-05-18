@@ -6,6 +6,13 @@ angular.module('p2pmusicApp')
     $scope.initialized = false;
     $scope.showFiles = false;
 
+    var nms = ["De Jong", "Jansen", "De Vries", "Van den Berg",
+    "Van Dijk", "Bakker", "Visser", "Smit", "Meijer", "De Boer", "Mulder",
+    "De Groot", "Bos", "Vos", "Peters", "Hendriks", "Van Leeuwen", "Dekker",
+    "Brouwer", "De Wit", "Dijkstra", "Smits", "De Graaf", "Van der Meer"]
+
+    $scope.username = nms[Math.floor(Math.random() * nms.length)];
+
     // $scope.username = $cookieStore.get('username');
 
     // if($scope.username.length > 0)
