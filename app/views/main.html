@@ -48,7 +48,7 @@
           <tr ng-repeat="(fileName, value) in transfers">
             <td>
               {{fileName}}
-              <div class="progress progress-striped">
+              <div class="progress progress-striped active">
                 <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
               </div></td>
           </tr>
