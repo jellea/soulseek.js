@@ -3,7 +3,7 @@
 angular.module('p2pmusicApp')
   .factory('fileService', function () {
 
-    var ownFiles = [];
+    window.ownFiles = [];
 
     var dirRead = function(element, callback){
       var entries = element.webkitEntries;
@@ -26,16 +26,11 @@ angular.module('p2pmusicApp')
         }
       }
 
-      setTimeout(function streamTrack (){
-        console.log(ownFiles[0].fullPath);
-      }
-      ,200)
-
       for (var i = 0; i < entries.length; ++i) {
         readPath(entries[i]);
       }
 
-      callback(ownFiles)
+      callback(ownFiles.length)
     };
 
 
