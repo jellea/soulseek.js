@@ -36,7 +36,10 @@
       <div class="container-fluid chat-bar">
         <div class="row-fluid">
           <div class="span12">
-            <input type="text" class="span12" placeholder="No serious shit please!">
+            <form ng-submit='sendMessage()'>
+            <input type="text" class="span12" ng-model='message' placeholder="No serious shit please!">
+            <input type='submit' value='Send'>
+            </form>
           </div>
         </div>
       </div>
