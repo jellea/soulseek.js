@@ -6,8 +6,11 @@ window.directoryEntry = window.directoryEntry || window.webkitDirectoryEntry;
 angular.module('p2pmusicApp')
   .controller('FileManagerCtrl', function ($scope, fileService) {
     $scope.setFile = function(element) {
-      // asd
-      console.log(fileService);
-      fileService.dirRead(element);
+      fileService.dirRead(element, $scope.updateFileList);
+    };
+
+    $scope.updateFileList = function(fileList) {
+      $scope.fileList = fileList;
+      console.log(fileList);
     };
   });
