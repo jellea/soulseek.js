@@ -1,10 +1,10 @@
-<div class="interface">
+<div class="interface" ng-controller="PeersCtrl">
   <div class="users">
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
           <h2>Users</h2>
-          <table class="table" ng-controller="PeersCtrl">
+          <table class="table">
             <tbody>
               <tr ng-repeat="peer in peers">
                 <td><a ng-click="showFileList()">{{peer}}</a></td>
@@ -15,13 +15,13 @@
       </div>
     </div>
   </div>
-  <div class="chat">
+  <div class="chat" ng-controller="ChatCtrl">
     <div class="chat-holder">
       <div class="container-fluid chat-content">
         <div class="row-fluid">
           <div class="span12">
             <h2>Chat</h2>
-            <table class="table" ng-controller="ChatCtrl">
+            <table class="table">
               <tbody>
                 <tr ng-repeat="msg in msgs">
                   <td>{{msg.user}}: {{msg.msg}}
@@ -41,19 +41,37 @@
         </div>
       </div>
     </div>
-    <div class="span9">
-      <table class="table" ng-controller="FiletransferCtrl">
-        <thead><h2>Transfers</h2></thead>
-        <tbody>
-          <tr ng-repeat="(fileName, value) in transfers">
-            <td>
-              {{fileName}}
-              <div class="progress progress-striped">
-                <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
-              </div></td>
-          </tr>
-        </tbody>
-      </table>
+  </div>
+
+  <div class="player">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <h2>Player</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transfers" ng-controller="FiletransferCtrl">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <h2>Transfers</h2>
+          <table class="table">
+            <tbody>
+              <tr ng-repeat="(fileName, value) in transfers">
+                <td>
+                  {{fileName}}
+                  <div class="progress progress-striped">
+                    <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
