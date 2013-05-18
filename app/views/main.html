@@ -2,7 +2,7 @@
   <!--<h2>Player</h2>-->
 <!--</div>-->
 <div class="row-fluid">
-    <div class="span2">
+    <!-- <div class="span2">
       <table class="table">
         <thead><h2>Rooms</h2></thead>
         <tbody>
@@ -14,12 +14,8 @@
           </tr>
         </tbody>
       </table>
-      <div ng-controller="FileManagerCtrl">
-        <input type="file" accept="audio/*" multiple onchange="angular.element(this).scope().setFile(this)">
-        <div ng-bind="fileList"></div>
-      </div>
-    </div>
-    <div class="span2">
+    </div> -->
+    <div class="span3">
       <table class="table" ng-controller="PeersCtrl">
         <thead><h2>Users</h2></thead>
         <tbody>
@@ -29,7 +25,7 @@
         </tbody>
       </table>
     </div>
-    <div class="span8">
+    <div class="span9">
       <table class="table" ng-controller="ChatCtrl">
         <thead><h2>Chat</h2></thead>
         <tbody>
@@ -39,7 +35,29 @@
           </tr>
         </tbody>
       </table>
-      <input type='text'>
+      <input type="text" class="span12" placeholder="No serious shit please!">
     </div>
+  </div>
+</div>
+
+<div class="overlay">
+  <div class="message row-fluid">
+    <h1>Welcome.</h2>
+    <form>
+      <div class="username" ng-controller="PeerCtrl">
+        <label for="inputName">What's your nickname?</label>
+        <span class="input-append">
+          <input type="text" id="inputName">
+          <button type="submit" class="btn">Go!</button>
+        </span>
+      </div>
+      <div>
+      <div class="files" ng-controller="FileManagerCtrl">
+        <label for="inputFiles">Files Please!</label>
+        <input type="file" id="inputFiles" class="span12" accept="audio/*" multiple onchange="angular.element(this).scope().setFile(this)">
+      </div>
+
+      </div>
+    </form>
   </div>
 </div>
