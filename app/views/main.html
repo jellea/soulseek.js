@@ -16,6 +16,7 @@
       </table>
       <div ng-controller="FileManagerCtrl">
         <input type="file" accept="audio/*" multiple onchange="angular.element(this).scope().setFile(this)">
+        <div ng-bind="fileList"></div>
       </div>
     </div>
     <div class="span2">
