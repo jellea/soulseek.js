@@ -3,11 +3,14 @@
 angular.module('p2pmusicApp')
   .controller('FileBrowserCtrl', function ($scope, $rootScope) {
 
-    $scope.showFiles = false;
+    $scope.showFileBrowser = false;
 
-    $rootScope.$on('rtc-gotFilelist', function(event, data)
-    {
-      $scope.showFiles = true;
+    $rootScope.$on('rtc-gotFileList', function(event, data) {
+
+
+      $scope.showFileBrowser = true;
+      $scope.$digest();
+
     });
 
   });
