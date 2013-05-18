@@ -1,10 +1,13 @@
 'use strict';
 
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem; 
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 window.directoryEntry = window.directoryEntry || window.webkitDirectoryEntry;
 
-var testFileSend = function (file){
-  var reader = new window.FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = onReadAsDataURL;
-}
+angular.module('p2pmusicApp')
+  .controller('FileManagerCtrl', function ($scope, fileService) {
+    $scope.setFile = function(element) {
+      // asd
+      console.log(fileService);
+      fileService.dirRead(element);
+    };
+  });

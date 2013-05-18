@@ -14,6 +14,9 @@
           </tr>
         </tbody>
       </table>
+      <div ng-controller="FileManagerCtrl">
+        <input type="file" accept="audio/*" multiple onchange="angular.element(this).scope().setFile(this)">
+      </div>
     </div>
     <div class="span2">
       <table class="table" ng-controller="PeersCtrl">
@@ -26,15 +29,16 @@
       </table>
     </div>
     <div class="span8">
-        <table class="table" ng-controller="ChatCtrl">
-          <thead><h2>Chat</h2></thead>
-          <tbody>
-            <tr ng-repeat="msg in msgs">
-              <td>{{msg.user}}: {{msg.msg}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <input type='text'>
+      <table class="table" ng-controller="ChatCtrl">
+        <thead><h2>Chat</h2></thead>
+        <tbody>
+          <tr ng-repeat="msg in msgs">
+            <td>{{msg.user}}: {{msg.msg}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input type='text'>
     </div>
   </div>
+</div>
