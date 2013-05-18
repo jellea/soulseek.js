@@ -15,12 +15,10 @@ angular.module('p2pmusicApp')
     }
 
     $rootScope.$on('rtc-gotFileList', function(event, data) {
-
       $scope.showFileBrowser = true;
       $scope.userid = data.userid;
       $scope.files = data.files;
       $scope.$digest();
-
     });
 
   });
