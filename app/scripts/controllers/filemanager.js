@@ -10,6 +10,6 @@ angular.module('p2pmusicApp')
     };
 
     $scope.processComplete = function() {
-      mainChannel.connect('2');
+      mainChannel.connect('default-server');
     };
   });

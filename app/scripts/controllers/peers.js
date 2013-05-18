@@ -5,6 +5,10 @@ angular.module('p2pmusicApp')
 
     $scope.peers = [];
 
+    $scope.showFileList = function (){
+      console.log($scope.peer);
+    }
+
     $rootScope.$on('rtc-onopen', function(event, data)
     {
       $scope.peers.push(data);

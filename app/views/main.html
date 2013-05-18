@@ -20,7 +20,7 @@
         <thead><h2>Users</h2></thead>
         <tbody>
           <tr ng-repeat="peer in peers">
-            <td>{{peer}}</td>
+            <td><a ng-click="showFileList()">{{peer}}</a></td>
           </tr>
         </tbody>
       </table>
