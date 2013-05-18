@@ -49,6 +49,17 @@ angular.module('p2pmusicApp')
         if (typeof message.filelist !== 'undefined'){
           mainChannel.channels[userid].filelist = message.filelist;
         }
+        if (typeof message.requestFile !== 'undefined'){
+
+          // if folder
+          // if single file
+          var file = ownFiles.filter(
+            function(x){return (x.fullPath==message.requestFile)}
+          );
+
+          console.log(file)
+          file[0].file(function(file){mainChannel.channels[userid].send(file)});
+        }
 
       }
       else if(typeof message == 'string')
