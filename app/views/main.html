@@ -76,6 +76,30 @@
   </div>
 </div>
 
+<div class="windows">
+  <div class="file-browser" ng-controller="FileBrowserCtrl" ng-show="showFiles">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <h2>File browser</h2>
+          <table class="table">
+            <tbody>
+              <tr ng-repeat="(fileName, value) in transfers">
+                <td>
+                  {{fileName}}
+                  <div class="progress progress-striped">
+                    <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="overlay" ng-controller="LoginCtrl" ng-hide="initialized">
   <div class="message row-fluid">
     <h1>Welcome.</h1>

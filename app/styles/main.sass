@@ -1,15 +1,22 @@
 @import "compass_twitter_bootstrap"
 @import "fonts.css"
 
+body
+  position                : relative
+  margin                  : 0
+  padding                 : 0
+
 h1, h2, h3, h4, h5, h6
   font-family             : "Maven Pro"
   font-weight             : 200
   font-size               : 4em
+  color                   : #999999
 
 h2
   font-size               : 2.5em
 
 .interface,
+.windows,
 .overlay
   position                : fixed
   top                     : 0
@@ -17,58 +24,76 @@ h2
   left                    : 0
   right                   : 0
 
-.users,
-.chat,
-.player,
-.transfers
-  position                : absolute
+  .users,
+  .chat,
+  .player,
+  .transfers,
+  .file-browser
+    position              : absolute
+    overflow              : scroll
+    background            : #ffffff
+    border                : 0px solid #f0f0f0
 
-.users
-  top                     : 0
-  bottom                  : 200px
-  left                    : 0
-  width                   : 199px
-  border-right            : 1px solid #f0f0f0
+  .users
+    top                   : 0
+    bottom                : 200px
+    left                  : 0
+    width                 : 199px
+    border-right-width    : 1px
 
-.chat
-  top                     : 0
-  bottom                  : 200px
-  left                    : 200px
-  right                   : 0
+  .chat
+    top                   : 0
+    bottom                : 200px
+    left                  : 200px
+    right                 : 0
 
-  .chat-holder
-    position              : relative
-    width                 : 100%
-    height                : 100%
+    .chat-holder
+      position            : relative
+      width               : 100%
+      height              : 100%
 
-    .chat-content
-      position            : absolute
-      top                 : 0
-      left                : 0
-      right               : 0
-      bottom              : 45px
+      .chat-content
+        position          : absolute
+        top               : 0
+        left              : 0
+        right             : 0
+        bottom            : 45px
 
-    .chat-bar
-      position            : absolute
-      left                : 0
-      right               : 0
-      bottom              : 0
-      height              : 45px
+      .chat-bar
+        position          : absolute
+        left              : 0
+        right             : 0
+        bottom            : 0
+        height            : 45px
 
-.player
-  bottom                  : 0
-  left                    : 0
-  width                   : 199px
-  height                  : 199px
-  border-top              : 1px solid #f0f0f0
-  border-right            : 1px solid #f0f0f0
+  .player
+    bottom                : 0
+    left                  : 0
+    width                 : 199px
+    height                : 199px
+    border-top-width      : 1px
+    border-right-width    : 1px
 
-.transfers
-  left                    : 200px
-  right                   : 0
-  bottom                  : 0
-  height                  : 199px
-  border-top              : 1px solid #f0f0f0
+  .transfers
+    left                  : 200px
+    right                 : 0
+    bottom                : 0
+    height                : 199px
+    border-top-width      : 1px
+
+.windows
+  pointer-events          : none
+
+  > div
+    box-shadow            : 0 0 10px rgba(0,0,0,0.2)
+    pointer-events        : auto
+
+  .file-browser
+    top                   : 0
+    bottom                : 0
+    right                 : 0
+    width                 : 80%
+    max-width             : 500px
 
 .overlay
   background              : rgba(0,0,0,0.8)
