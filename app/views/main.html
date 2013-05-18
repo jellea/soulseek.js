@@ -57,7 +57,7 @@
       <div class="row-fluid">
         <div class="span12">
           <h2>Player</h2>
-          <span>▶</span>
+          <span><i class="icon-play icon-4x"></i></span>
         </div>
       </div>
     </div>
@@ -95,7 +95,8 @@
           <table class="table">
             <tbody>
               <tr ng-repeat="file in files">
-                <td><a ng-click="stream()">s</a> <a ng-click="download()">d</a> {{file}}</td>
+                <td><a ng-click="stream()"><i class="icon-play-sign"></i></a> 
+                  <a ng-click="download()"><i class="icon-download-alt"></i></a> {{file}}</td>
               </tr>
             </tbody>
           </table>

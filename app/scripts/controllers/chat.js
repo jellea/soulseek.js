@@ -3,7 +3,7 @@
 angular.module('p2pmusicApp')
   .controller('ChatCtrl', function ($scope, $rootScope) {
     $scope.msgs = [
-      {user: 'chat', msg: 'welcome'}
+      {user: 'chat', msg: 'Welcome!'}
     ];
 
     $scope.sendMessage = function(){
