@@ -37,7 +37,7 @@
         <div class="row-fluid">
           <div class="span12">
             <form ng-submit='sendMessage()'>
-            <input type="text" class="span12" ng-model='message' placeholder="No serious shit please!">
+            <input type="text" class="span12" ng-model='message' placeholder="This is my message!">
             <input type='submit' value='Send'>
             </form>
           </div>
@@ -51,6 +51,7 @@
       <div class="row-fluid">
         <div class="span12">
           <h2>Player</h2>
+          <span>▶</span>
         </div>
       </div>
     </div>
@@ -87,13 +88,8 @@
           <h2>File browser</h2>
           <table class="table">
             <tbody>
-              <tr ng-repeat="(fileName, value) in transfers">
-                <td>
-                  {{fileName}}
-                  <div class="progress progress-striped">
-                    <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
-                  </div>
-                </td>
+              <tr ng-repeat="file in files">
+                <td><a ng-click="stream()">s</a> <a ng-click="download()">d</a> {{file}}</td>
               </tr>
             </tbody>
           </table>

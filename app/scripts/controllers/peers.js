@@ -16,12 +16,12 @@ angular.module('p2pmusicApp')
       $scope.$digest();
     });
 
-    $rootScope.$on('rtc-onclose', function(event, data)
+    $rootScope.$on('rtc-onleave', function(event, data)
     {
       console.log(data);
-      for (i = 0; i < $scope.peers.length; i++) {
-        peer = $scope.peers[i];
-        if (peer === data.user) {
+      for (var i = 0; i < $scope.peers.length; i++) {
+        var peer = $scope.peers[i];
+        if (peer === data) {
           $scope.peers.splice(i, 1);
           break;
         }

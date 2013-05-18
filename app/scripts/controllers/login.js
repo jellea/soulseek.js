@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('p2pmusicApp')
-  .controller('LoginCtrl', function ($scope, fileService) {
+  .controller('LoginCtrl', function ($scope, RTCService, fileService) {
 
     $scope.initialized = false;
     $scope.showFiles = false;
 
     $scope.setUsername = function() {
 
-      mainChannel.userid = $scope.username;
+      //mainChannel.userid = $scope.username;
+      RTCService.setupDataChannel($scope.username);
       $scope.username = '';
 
       $scope.showFiles = true;
