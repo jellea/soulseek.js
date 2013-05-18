@@ -3,8 +3,9 @@
 angular.module('p2pmusicApp')
   .factory('fileService', function () {
 
-    var dirRead = function(element){
-      var files;
+    var ownFiles = [];
+
+    var dirRead = function(element, callback){
       var entries = element.webkitEntries;
 
       var errorHandler = function(error){console.log(error)};
@@ -21,25 +22,26 @@ angular.module('p2pmusicApp')
             };
           }, errorHandler);
         }else{
-          files.push(path);
+          ownFiles.push(path);
         }
       }
 
       setTimeout(function streamTrack (){
-        console.log(files[0].fullPath);
-        testFileSend(files[0]);
+        console.log(ownFiles[0].fullPath);
       }
       ,200)
 
       for (var i = 0; i < entries.length; ++i) {
         readPath(entries[i]);
       }
-      return files
+
+      callback(ownFiles)
     };
 
 
     // Public API here
     return {
-      dirRead: dirRead
+      dirRead: dirRead,
+      ownFiles: ownFiles
     };
-  });
+});
