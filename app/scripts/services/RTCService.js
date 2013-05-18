@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('p2pmusicApp')
-  .factory('RTCService', function ($rootScope) {
+  .factory('RTCService', function ($rootScope, fileService) {
 
     window.mainChannel = new DataChannel();
     mainChannel.firebase = 'webrtc-experiment';
@@ -20,6 +20,7 @@ angular.module('p2pmusicApp')
       // get user filelist
       $rootScope.$broadcast('rtc-onopen', userid);
       mainChannel.send('hi!');
+      //mainChannel.send({filelist: 'files'});
     }
 
     mainChannel.onleave = function (userid)
@@ -38,8 +39,13 @@ angular.module('p2pmusicApp')
         if (typeof message.filelistRequest !== 'undefined'){
           // send filelist if requested
           console.log('filelistRequest!');
-          mainChannel.channels[userid].send({filelist: 'files'});
+          console.log(fileService.ownFiles);
+          mainChannel.channels[userid].send({file: fileService.ownFiles});
         }
+        if (typeof message.filelist !== 'undefined'){
+          console.log(message.filelist);
+        }
+
       }
       else if(typeof message == 'string')
       {
