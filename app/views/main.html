@@ -112,7 +112,7 @@
           <table class="table">
             <tbody>
               <tr ng-repeat="file in files">
-                <td><a ng-click="stream()"><i class="icon-play-sign"></i></a> 
+                <td><a ng-click="stream()"><i class="icon-play-sign"></i></a>
                   <a ng-click="download()"><i class="icon-download-alt"></i></a> {{file}}</td>
               </tr>
             </tbody>
@@ -138,6 +138,8 @@
     <form ng-show="showFiles">
       <div class="files">
         <label for="inputFiles">Files Please!</label>
+        <div class="span12" file-drop></div>
+
         <input type="file" id="inputFiles" class="span12" accept="audio/*" multiple onchange="angular.element(this).scope().setFiles(this)">
       </div>
     </form>
