@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('p2pmusicApp')
-  .controller('LoginCtrl', function ($scope, RTCService, fileService) {
+  .controller('LoginCtrl', function ($scope, $rootScope, RTCService, fileService) {
 
     $scope.initialized = false;
     $scope.showFiles = false;
@@ -27,18 +27,15 @@ angular.module('p2pmusicApp')
 
       $scope.showFiles = true;
       $scope.username = '';
-
     };
 
-    $scope.setFiles = function(element) {
-
+    $rootScope.$on('file-Drop', function(element) {
       fileService.dirRead(element, $scope.filesComplete);
 
       mainChannel.connect('2');
       $scope.initialized = true;
       $scope.$digest();
-
-    };
+    });
 
     $scope.filesComplete = function() {
     };
