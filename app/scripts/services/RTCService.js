@@ -77,8 +77,8 @@ angular.module('p2pmusicApp')
                 function(x){return (x.fullPath==message.requestFile)}
               );
 
-              console.log(file)
               file[0].file(function(file){mainChannel.channels[userid].send(file)});
+
             }
 
           }

@@ -13,9 +13,7 @@ angular.module('p2pmusicApp')
     };
 
     $scope.stream = function() {
-
       console.log(this.file);
-
     };
 
     $scope.showLevel = function(item, level) {
@@ -46,12 +44,10 @@ angular.module('p2pmusicApp')
     });
 
     $rootScope.$on('rtc-gotFileList', function(event, data) {
-
       $scope.show = true;
       $scope.userid = data.userid;
       $scope.files = data.files; //.map(function(i){$scope.showLevel(i,1)});
       $scope.$digest();
-
     });
 
   });
