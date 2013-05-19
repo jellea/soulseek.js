@@ -175,11 +175,10 @@ h2
     i
       font-size           : 7em
       width               : 100%
-      margin              : 0 0 20px 0
+      -webkit-animation   : pulse 2s infinite
 
-      -webkit-animation-name: greenPulse
-      -webkit-animation-duration: 2s
-      -webkit-animation-iteration-count: infinite
+    p
+      margin              : 2em 0 0
 
   form
     margin                : 4em 0 0
@@ -235,10 +234,10 @@ div[file-drop].dragenter
       left                : 300px
       height              : 299px
 
-@-webkit-keyframes greenPulse
-  from background-color   : #749a02
-  -webkit-box-shadow      : 0 0 9px #333
-  50% background-color    : #91bd09
-  -webkit-box-shadow      : 0 0 18px #91bd09
-  to background-color     : #749a02
-  -webkit-box-shadow      : 0 0 9px #333
+@-webkit-keyframes pulse
+  0%
+    opacity               : 0.2
+  50%
+    opacity               : 0.5
+  100%
+    opacity               : 0.2
