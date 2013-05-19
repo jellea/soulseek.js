@@ -3,7 +3,7 @@
 angular.module('p2pmusicApp')
   .controller('FileBrowserCtrl', function ($scope, $rootScope) {
 
-    $scope.showFileBrowser = false;
+    $scope.show = false;
     $scope.userid = '';
 
     $scope.download = function() {
@@ -37,23 +37,17 @@ angular.module('p2pmusicApp')
 
     };
 
-    console.log($rootScope);
+    $scope.$on('closeWindows', function() {
 
-    $rootScope.$on('click', function(e) {
-
-      console.log(e);
-      $scope.showFileBrowser = false;
+      console.log('closeMe');
+      $scope.show = false;
+      //$scope.$digest();
 
     });
 
     $rootScope.$on('rtc-gotFileList', function(event, data) {
 
-      angular.element('.interface').click( function(event, $scope) {
-        console.log(event);
-        $scope.showFileBrowser = false;
-      });
-
-      $scope.showFileBrowser = true;
+      $scope.show = true;
       $scope.userid = data.userid;
       $scope.files = data.files; //.map(function(i){$scope.showLevel(i,1)});
       $scope.$digest();
