@@ -30,6 +30,11 @@ angular.module('p2pmusicApp')
     }
 
     $rootScope.$on('rtc-gotFileList', function(event, data) {
+      angular.element('.interface').click(
+        function(event, $scope){
+        console.log(event);
+        $scope.showFileBrowser = false;
+      })
       $scope.showFileBrowser = true;
       $scope.userid = data.userid;
       $scope.files = data.files //.map(function(i){$scope.showLevel(i,1)});

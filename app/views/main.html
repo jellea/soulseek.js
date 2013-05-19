@@ -91,9 +91,14 @@
               <tbody>
                 <tr ng-repeat="(fileName, value) in transfers">
                   <td>
+                    <i ng-show="value.sent" class="icon-chevron-sign-up"></i>
+                    <i ng-show="value.received" class="icon-chevron-sign-down"></i>
                     {{fileName}}
-                    <div class="progress progress-striped active">
+                    <div ng-show="value.sent" class="progress progress-warning progress-striped active">
                       <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
+                    </div>
+                    <div ng-show="value.received" class="progress progress-striped active">
+                      <div class="bar" ng-style="{width: value.received/value.length*100+'%'}"></div>
                     </div>
                   </td>
                 </tr>
