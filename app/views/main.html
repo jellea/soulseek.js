@@ -1,4 +1,4 @@
-<div class="interface" ng-controller="interface" ng-click="broadcastClick()">
+<div class="interface" ng-controller="InterfaceCtrl" ng-click="broadcastClick()">
   <div class="users" ng-controller="PeersCtrl">
     <div class="holder">
       <div class="container-fluid title">
@@ -65,7 +65,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
-          <span class="button" ng-click="togglePlaying()">
+          <span class="button" ng-click="togglePlaying(); $event.stopPropagation();">
             <i class="icon-play" ng-hide="isPlaying"></i>
             <i class="icon-pause" ng-show="isPlaying"></i>
           </span>
@@ -110,8 +110,8 @@
   </div>
 </div>
 
-<div class="windows">
-  <div class="file-browser" ng-controller="FileBrowserCtrl" ng-show="showFileBrowser">
+<div class="windows" ng-controller="WindowsCtrl">
+  <div class="file-browser" ng-controller="FileBrowserCtrl" ng-show="show">
     <div class="holder">
       <div class="container-fluid title">
         <div class="row-fluid">

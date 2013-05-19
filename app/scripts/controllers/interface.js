@@ -5,7 +5,7 @@ angular.module('p2pmusicApp')
 
     $scope.broadcastClick = function() {
 
-      $scope.$broadcast('interfaceClick');
+      $scope.$parent.$broadcast('interfaceClick');
 
     };
 
