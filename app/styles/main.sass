@@ -101,25 +101,38 @@ h2
     height                : 199px
     border-top-width      : 1px
     border-right-width    : 1px
-    box-shadow            : INSET 0 0 100px rgb(0,0,0)
+    box-shadow            : INSET 0 0 100px rgba(0,0,0,0.5)
     background-size       : cover
-    color                 : #ffffff
-    font-size             : 4em
+    background-image      : url(/images/cover.jpg)
+    color                 : #000000
+    font-size             : 3em
     line-height           : 199px
     text-align            : center
     vertical-align        : middle
 
-    span
+    &:hover .container-fluid
+      background          : rgba(255, 255, 255, 0.9)
+      box-shadow          : INSET 0 0 100px rgba(0,0,0,0.2)
+
+    &:hover span.button
+      opacity             : 0.5
+
+    span.button
+      opacity             : 0
       display             : inline-block
-      width               : 100px
-      height              : 100px
-      line-height         : 100px
-      border-radius       : 100px
-      background          : rgba(0,0,0,0.8)
+      width               : 80px
+      height              : 80px
+      line-height         : 80px
+      border-radius       : 80px
+      cursor              : pointer
+      border              : 1px solid rgba(0, 0, 0, 1)
+
+      &:hover
+        opacity           : 0.8
 
       i
         position          : relative
-        left              : 5px
+        left              : 4px
 
   .transfers
     left                  : 200px
@@ -132,7 +145,7 @@ h2
   pointer-events          : none
 
   > div
-    box-shadow            : 0 0 10px rgba(0,0,0,0.2)
+    box-shadow            : 0 0 10px rgba(0, 0, 0, 0.2)
     pointer-events        : auto
 
   .file-browser
@@ -185,6 +198,42 @@ div[file-drop].dragenter
   background              : #f0e0f0
   border                  : 1px solid #e0a0e0
   border-radius           : 5px
+
+@media screen and (min-width: 900px)
+  .interface
+    .users
+      width               : 249px
+
+    .chat
+      left                : 250px
+      bottom              : 250px
+
+    .player
+      width               : 249px
+      height              : 249px
+      line-height         : 249px
+
+    .transfers
+      left                : 250px
+      height              : 249px
+
+@media screen and (min-width: 1400px)
+  .interface
+    .users
+      width               : 299px
+
+    .chat
+      left                : 300px
+      bottom              : 300px
+
+    .player
+      width               : 299px
+      height              : 299px
+      line-height         : 299px
+
+    .transfers
+      left                : 300px
+      height              : 299px
 
 @-webkit-keyframes greenPulse
   from background-color   : #749a02
