@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('p2pmusicApp')
-  .factory('RTCService', function ($rootScope, fileService) {
+  .factory('RTCService', function ($rootScope, fileService, playerService) {
 
     window.mainChannel = {}
 
@@ -92,10 +92,17 @@ angular.module('p2pmusicApp')
           //console.log(packets);
           $rootScope.$broadcast('rtc-onFileProgress', packets);
 
+          // packets.fileName
           // packets.remaining
           // packets.sent
           // packets.received
           // packets.length
+        },
+        onStreamProgress: function (packets)
+        {
+          console.log(packets);
+          playerService.bufferSound(packets);
+          //$rootScope.$broadcast('rtc-onFileProgress', packets);
         },
         onFileSent: function (file)
         {

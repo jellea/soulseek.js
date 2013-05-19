@@ -1,17 +1,20 @@
 'use strict';
 
 angular.module('p2pmusicApp')
-  .factory('PlayerService', function () {
+  .factory('playerService', function () {
     if('webkitAudioContext' in window) {
       var myAudioContext = new webkitAudioContext();
     }
 
     var bufferSound = function (event) {
-      var request = event.target;
+      console.log(event)
       var source = myAudioContext.createBufferSource();
-      source.buffer = myAudioContext.createBuffer(request.response, false);
-      source.connect(myAudioContext.destination);
-      source.noteOn(0);
+      var buffer = myAudioContext.decodeAudioData(event.data,
+        function(buffer){
+          source.buffer = myAudioContext.createBuffer(buffer, false);
+          source.connect(myAudioContext.destination);
+          source.noteOn(0);
+        });
     }
 
     // Public API here
