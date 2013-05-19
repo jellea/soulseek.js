@@ -137,7 +137,7 @@
 <div class="overlay" ng-controller="LoginCtrl" ng-hide="initialized">
   <div class="message row-fluid">
     <h1><img src="/images/logo.png"> SoulWeb</h1>
-    <form ng-submit="setUsername()" ng-hide="showFiles">
+    <form ng-submit="setUsername()" ng-hide="usernameSet">
       <div class="username">
         <label for="username">What's your nickname?</label>
         <span class="input-append">
@@ -146,12 +146,10 @@
         </span>
       </div>
     </form>
-    <form ng-show="showFiles">
+    <form ng-show="usernameSet">
       <div class="files">
-        <label for="inputFiles">Files Please!</label>
-        <div class="span12" file-drop></div>
-
-        <input type="file" id="inputFiles" class="span12" accept="audio/*" multiple onchange="angular.element(this).scope().setFiles(this)">
+        <i class="icon-copy icon-4x"></i>
+        <p>Drag some files on this window</p>
       </div>
     </form>
   </div>

@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('p2pmusicApp')
-  .controller('LoginCtrl', function ($scope, RTCService, fileService) {
+  .controller('LoginCtrl', function ($scope, $rootScope, RTCService, fileService) {
 
     $scope.initialized = false;
-    $scope.showFiles = false;
+    $scope.usernameSet = false;
+    $scope.filesDropped = false;
 
     var nms = ["De Jong", "Jansen", "De Vries", "Van den Berg",
     "Van Dijk", "Bakker", "Visser", "Smit", "Meijer", "De Boer", "Mulder",
@@ -25,22 +26,28 @@ angular.module('p2pmusicApp')
       RTCService.setupDataChannel($scope.username);
       // $cookieStore.put('username', $scope.username);
 
-      $scope.showFiles = true;
+      $scope.usernameSet = true;
       $scope.username = '';
-
+      $scope.checkInit();
     };
 
-    $scope.setFiles = function(element) {
-
+    $rootScope.$on('file-Drop', function(element) {
+      console.log('drop');
       fileService.dirRead(element, $scope.filesComplete);
 
-      mainChannel.connect('2');
-      $scope.initialized = true;
-      $scope.$digest();
+      $scope.filesDropped = true;
+      $scope.checkInit();
 
-    };
+      $scope.$digest();
+    });
 
     $scope.filesComplete = function() {
     };
+
+    $scope.checkInit = function() {
+      if($scope.filesDropped && $scope.usernameSet){
+        $scope.initialized = true;
+      }
+    }
 
   });
