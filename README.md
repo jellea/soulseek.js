@@ -1,4 +1,4 @@
-Made by [Guido](http://github.com/guidobouman) and [Jelle](http://github.com/jellea] at AngelHack Moscow 2013.
+Made by [Guido](http://github.com/guidobouman) and [Jelle](http://github.com/jellea) at AngelHack Moscow 2013.
 
 TODO:
 * SHA-1 worker for multipeer downloading
