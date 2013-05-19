@@ -156,6 +156,18 @@ h2
   text-align              : left
   box-shadow              : 0 0 25px rgba(0,0,0,0.2)
 
+  .files
+    text-align            : center
+
+    i
+      font-size           : 7em
+      width               : 100%
+      margin              : 0 0 20px 0
+
+      -webkit-animation-name: greenPulse
+      -webkit-animation-duration: 2s
+      -webkit-animation-iteration-count: infinite
+
   form
     margin                : 4em 0 0
 
@@ -173,3 +185,11 @@ div[file-drop].dragenter
   background              : #f0e0f0
   border                  : 1px solid #e0a0e0
   border-radius           : 5px
+
+@-webkit-keyframes greenPulse
+  from background-color   : #749a02
+  -webkit-box-shadow      : 0 0 9px #333
+  50% background-color    : #91bd09
+  -webkit-box-shadow      : 0 0 18px #91bd09
+  to background-color     : #749a02
+  -webkit-box-shadow      : 0 0 9px #333
