@@ -125,7 +125,8 @@
           <div class="span12">
             <table class="table">
               <tbody>
-                <tr ng-repeat="file in files">
+                <tr><td><input type="text" ng-model="search" class="span12"></td></tr>
+                <tr ng-repeat="file in files | filter:search">
                   <td><a ng-click="stream()"><i class="icon-play-sign"></i></a>
                     <a ng-click="download()"><i class="icon-download-alt"></i></a> {{file}}</td>
                 </tr>
