@@ -4,7 +4,6 @@ angular.module('p2pmusicApp')
   .factory('fileService', function ($rootScope) {
 
     function DnDFileController(selector, onDropCallback) {
-      console.log('init dnd');
       var el_ = document.querySelector(selector);
 
       this.dragenter = function(e) {
