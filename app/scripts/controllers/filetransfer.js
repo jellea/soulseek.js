@@ -10,7 +10,6 @@ angular.module('p2pmusicApp')
     });
 
     $rootScope.$on('rtc-onFileSent', function(event, data){
-      console.log(data);
       $scope.transfers[data.name].finished = true;
       $scope.$digest();
     });

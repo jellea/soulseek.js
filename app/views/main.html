@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid content">
+      <div class="container-fluid content" scroll-bottom>
         <div class="row-fluid">
           <div class="span12">
             <table class="table">
@@ -65,10 +65,9 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
-          <span class="ring">
-            <span class="button">
-              <i class="icon-play"></i>
-            </span>
+          <span class="button" ng-click="togglePlaying()">
+            <i class="icon-play" ng-hide="isPlaying"></i>
+            <i class="icon-pause" ng-show="isPlaying"></i>
           </span>
         </div>
       </div>

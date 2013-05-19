@@ -6,7 +6,6 @@ angular.module('p2pmusicApp')
     $scope.peers = [];
 
     $scope.showFileList = function (){
-      console.log(this.peer);
       mainChannel.channels[this.peer].send({filelistRequest: true})
     }
 
@@ -18,7 +17,6 @@ angular.module('p2pmusicApp')
 
     $rootScope.$on('rtc-onleave', function(event, data)
     {
-      console.log(data);
       for (var i = 0; i < $scope.peers.length; i++) {
         var peer = $scope.peers[i];
         if (peer === data) {
