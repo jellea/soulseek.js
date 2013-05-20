@@ -11,7 +11,7 @@ angular.module('p2pmusicApp')
         autoCloseEntireSession: false,
         transmitRoomOnce: false,
         openSignalingChannel: function (config) {
-            var URL = "http://localhost:9002/";
+            var URL = "http://slskjs.nodejitsu.com/";
 
             var _channel = config.channel || this.channel || 'default-channel';
             var sender = Math.round(Math.random() * 60535) + 5000;
@@ -78,7 +78,26 @@ angular.module('p2pmusicApp')
               );
 
               file[0].file(function(file){mainChannel.channels[userid].send(file)});
+            }
+            if (typeof message.requestStream !== 'undefined'){
 
+              // if folder
+              // if single file
+              var file = ownFiles.filter(
+                function(x){return (x.fullPath==message.requestFile)}
+              );
+
+              file[0].file(
+                function(file)
+                {
+                  new window.FileReader();
+                  reader.readAsArrayBuffer(result);
+                  reader.onload = function(e)
+                  {
+                    mainChannel.channels[userid].send(reader.result);
+                  }
+                  ;
+                });
             }
 
           }
