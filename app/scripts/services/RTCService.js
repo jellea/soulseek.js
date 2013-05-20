@@ -6,36 +6,10 @@ angular.module('p2pmusicApp')
     window.mainChannel = {}
 
     var setupDataChannel = function(userid) {
-      window.mainChannel = new DataChannel('default-channel',{
+      window.mainChannel = new DataChannel('slsk-channel',{
         direction: 'many-to-many',
         autoCloseEntireSession: false,
         transmitRoomOnce: false,
-        openSignalingChannel: function (config) {
-            var URL = "http://slskjs.nodejitsu.com/";
-
-            var _channel = config.channel || this.channel || 'default-channel';
-            var sender = Math.round(Math.random() * 60535) + 5000;
-
-            io.connect(URL).emit('new-channel', {
-                channel: _channel,
-                sender : sender
-            });
-
-            var socket = io.connect(URL + _channel);
-            socket.channel = _channel;
-            socket.on('connect', function () {
-                if (config.callback) config.callback(socket);
-            });
-
-            socket.send = function (message) {
-                socket.emit('message', {
-                    sender: sender,
-                    data  : message
-                });
-            };
-
-            socket.on('message', config.onmessage);
-        },
         userid: userid,
         onopen: function (userid)
         {
