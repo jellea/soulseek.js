@@ -1,0 +1,161 @@
+<div class="interface" ng-controller="InterfaceCtrl" ng-click="broadcastClick()">
+  <div class="users" ng-controller="PeersCtrl">
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>Users</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr ng-repeat="peer in peers">
+                  <td><a ng-click="showFileList()">{{peer}}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat" ng-controller="ChatCtrl">
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>Chat</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content" scroll-bottom="">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr ng-repeat="msg in msgs">
+                  <td>{{msg.user}}: {{msg.msg}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid bar">
+        <div class="row-fluid">
+          <div class="span12">
+            <form ng-submit="sendMessage()">
+              <input type="text" class="span12" ng-model="message">
+              <input type="submit" value="Send">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="player" ng-controller="PlayerCtrl">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <span class="button" ng-click="togglePlaying(); $event.stopPropagation();">
+            <i class="icon-play" ng-hide="isPlaying"></i>
+            <i class="icon-pause" ng-show="isPlaying"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transfers" ng-controller="FiletransferCtrl">
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>Transfers</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr ng-repeat="(fileName, value) in transfers">
+                  <td>
+                    <i ng-show="value.sent" class="icon-chevron-sign-up"></i>
+                    <i ng-show="value.received" class="icon-chevron-sign-down"></i>
+                    {{fileName}}
+                    <div ng-show="value.sent" class="progress progress-warning progress-striped active">
+                      <div class="bar" ng-style="{width: value.sent/value.length*100+'%'}"></div>
+                    </div>
+                    <div ng-show="value.received" class="progress progress-striped active">
+                      <div class="bar" ng-style="{width: value.received/value.length*100+'%'}"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="windows" ng-controller="WindowsCtrl">
+  <div class="file-browser" ng-controller="FileBrowserCtrl" ng-show="show">
+    <div class="holder">
+      <div class="container-fluid title">
+        <div class="row-fluid">
+          <div class="span12">
+            <h2>File browser</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table">
+              <tbody>
+                <tr><td><input type="text" ng-model="search" class="span12"></td></tr>
+                <tr ng-repeat="file in files | filter:search">
+                  <td><a ng-click="stream()"><i class="icon-play-sign"></i></a>
+                    <a ng-click="download()"><i class="icon-download-alt"></i></a> {{file}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" ng-controller="LoginCtrl" ng-hide="initialized">
+  <div class="message row-fluid">
+    <h1><img src="/images/3ceb370e.logo.png"> SoulSeek.js</h1>
+    <form ng-submit="setUsername()" ng-hide="usernameSet">
+      <div class="username">
+        <label for="username">What's your nickname?</label>
+        <span class="input-append">
+          <input type="text" id="username" ng-model="username" autofocus="">
+          <button type="submit" class="btn">Go!</button>
+        </span>
+      </div>
+    </form>
+    <form ng-show="usernameSet">
+      <div class="files">
+        <i class="icon-copy icon-4x"></i>
+        <p>Drag some files on this window</p>
+      </div>
+    </form>
+  </div>
+</div>
